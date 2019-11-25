@@ -1,0 +1,2 @@
+class ClientsResourcesController < ApplicationController
+end
