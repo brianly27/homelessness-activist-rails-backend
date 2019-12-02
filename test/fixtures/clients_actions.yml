@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  action: one
+  submit_date: 2019-12-01 05:36:06
+  complete_date: 2019-12-01 05:36:06
+  status: MyString
+  note: MyString
+
+two:
+  client: two
+  action: two
+  submit_date: 2019-12-01 05:36:06
+  complete_date: 2019-12-01 05:36:06
+  status: MyString
+  note: MyString

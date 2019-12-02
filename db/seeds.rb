@@ -12,6 +12,7 @@ UsersClient.destroy_all
 ClientsResource.destroy_all
 Resource.destroy_all
 Action.destroy_all
+ClientsAction.destroy_all
 
 user1 = User.create(first_name: "brian")
 
@@ -24,3 +25,5 @@ resource1 = Resource.create(name: "resource 1")
 cr1 = ClientsResource.create(client_id: client1.id, resource_id: resource1.id)
 
 action1 = Action.create(resource_id: resource1.id, name: "action 1")
+
+ca1 = ClientsAction.create(client_id: client1.id, action_id: action1.id)

@@ -5,8 +5,6 @@ class CreateClientsResources < ActiveRecord::Migration[6.0]
       t.references :resource, null: false, foreign_key: true
       t.boolean :wants_resource
       t.boolean :has_resource
-      t.datetime :start_date
-      t.datetime :complete_date
       t.string :note
 
       t.timestamps

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_230648) do
+ActiveRecord::Schema.define(version: 2019_12_01_133605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_230648) do
   create_table "actions", force: :cascade do |t|
     t.bigint "resource_id", null: false
     t.string "name"
+    t.string "description"
     t.string "form"
+    t.string "submit_address"
     t.string "readme"
     t.string "contact_name"
     t.string "contact_phone"
@@ -44,13 +46,24 @@ ActiveRecord::Schema.define(version: 2019_11_25_230648) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "clients_actions", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "action_id", null: false
+    t.datetime "submit_date"
+    t.datetime "complete_date"
+    t.string "status"
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["action_id"], name: "index_clients_actions_on_action_id"
+    t.index ["client_id"], name: "index_clients_actions_on_client_id"
+  end
+
   create_table "clients_resources", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.bigint "resource_id", null: false
     t.boolean "wants_resource"
     t.boolean "has_resource"
-    t.datetime "start_date"
-    t.datetime "complete_date"
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -60,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_230648) do
 
   create_table "resources", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.string "readme"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,6 +99,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_230648) do
   end
 
   add_foreign_key "actions", "resources"
+  add_foreign_key "clients_actions", "actions"
+  add_foreign_key "clients_actions", "clients"
   add_foreign_key "clients_resources", "clients"
   add_foreign_key "clients_resources", "resources"
   add_foreign_key "users_clients", "clients"

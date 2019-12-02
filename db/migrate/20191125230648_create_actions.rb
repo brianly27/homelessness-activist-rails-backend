@@ -3,7 +3,9 @@ class CreateActions < ActiveRecord::Migration[6.0]
     create_table :actions do |t|
       t.references :resource, null: false, foreign_key: true
       t.string :name
+      t.string :description
       t.string :form
+      t.string :submit_address
       t.string :readme
       t.string :contact_name
       t.string :contact_phone
