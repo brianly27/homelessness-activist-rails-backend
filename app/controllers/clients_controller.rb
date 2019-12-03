@@ -18,7 +18,12 @@ class ClientsController < ApplicationController
         )
     
         if @client.save
-          render json: { clientId: @client.id}
+          ClientsResource.create(client_id: @client.id, resource_id: 1)
+          ClientsResource.create(client_id: @client.id, resource_id: 2)
+          ClientsResource.create(client_id: @client.id, resource_id: 3)
+          ClientsResource.create(client_id: @client.id, resource_id: 4)
+        
+          render json: { clientId: @client.id, resources: @client.resources}
         else
           render json: { 'errors': @client.errors }
         end
