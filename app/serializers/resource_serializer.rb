@@ -1,3 +1,4 @@
 class ResourceSerializer < ActiveModel::Serializer
-  attributes :name, :readme
+  attributes :id, :name, :description, :readme
+  has_many :actions
 end
