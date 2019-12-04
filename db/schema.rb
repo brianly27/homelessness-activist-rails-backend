@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_133605) do
   create_table "clients_actions", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.bigint "action_id", null: false
-    t.datetime "submit_date"
-    t.datetime "complete_date"
+    t.string "submit_date"
+    t.string "complete_date"
     t.string "status"
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
